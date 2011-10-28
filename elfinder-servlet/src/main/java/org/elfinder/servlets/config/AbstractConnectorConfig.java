@@ -8,10 +8,8 @@ import java.util.List;
 
 import javax.activation.MimetypesFileTypeMap;
 
-import org.apache.commons.lang.ArrayUtils;
 import org.elfinder.servlets.FileActionEnum;
 import org.elfinder.servlets.fs.IFsImpl;
-
 
 import eu.medsea.mimeutil.MimeType;
 import eu.medsea.mimeutil.MimeUtil;

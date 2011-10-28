@@ -1,13 +1,9 @@
 package my.sample;
 
-import org.elfinder.servlets.AbstractConnectorServlet;
-import org.elfinder.servlets.config.AbstractConnectorConfig;
-import org.elfinder.servlets.fs.IFsImpl;
-import org.elfinder.servlets.fs.DiskFsImpl;
-
-import java.io.File;
-
 import org.apache.log4j.Logger;
+import org.elfinder.servlets.config.AbstractConnectorConfig;
+import org.elfinder.servlets.fs.DiskFsImpl;
+import org.elfinder.servlets.fs.IFsImpl;
 
 
 /**

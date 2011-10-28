@@ -2,11 +2,8 @@ package my.sample;
 
 import javax.servlet.http.HttpServletRequest;
 
-import org.apache.commons.lang.StringUtils;
 import org.apache.log4j.Logger;
-
 import org.elfinder.servlets.AbstractConnectorServlet;
-import org.elfinder.servlets.commands.AbstractCommand;
 import org.elfinder.servlets.config.AbstractConnectorConfig;
 
 /**
@@ -19,6 +16,7 @@ import org.elfinder.servlets.config.AbstractConnectorConfig;
 /**
  * Sample of custom servlet implementation.
  */
+@SuppressWarnings("serial")
 public class MySampleServlet extends AbstractConnectorServlet {
 
 	private static Logger S_LOG = Logger.getLogger(MySampleServlet.class);
