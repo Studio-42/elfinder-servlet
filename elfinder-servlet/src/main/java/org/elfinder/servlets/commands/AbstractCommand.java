@@ -480,17 +480,20 @@ public abstract class AbstractCommand {
 		//		}
 
 		boolean isDir = path.isDirectory();
-
+		String mimeType=config.getMime(path);
 		Map<String, Object> info = new HashMap<String, Object>();
 		info.put("name", encodeFileNameForOutput(basename(path)));
 		info.put("hash", _hash(path));
-		info.put("mime", isDir ? "directory" : config.getMime(path));
+		info.put("mime", isDir ? "directory" : mimeType);
 		info.put("date", config.dateFormat(path.lastModified()));
 		info.put("size", isDir ? getFs().getDirSize(path) : getFs().getFileSize(path));
 		info.put("read", isDir ? config._isAllowedExistingDir(path, FileActionEnum.READ) : config._isAllowedExistingFile(path, FileActionEnum.READ));
 		info.put("write", isDir ? config._isAllowedExistingDir(path, FileActionEnum.WRITE) : config._isAllowedExistingFile(path, FileActionEnum.WRITE));
 		info.put("rm", isDir ? config._isAllowedExistingDir(path, FileActionEnum.DELETE) : config._isAllowedExistingFile(path, FileActionEnum.WRITE));
-
+		
+		if(mimeType.contains("image"))
+		    info.put("tmb", isDir ? "" : encodeFileNameForOutput(_path2url(path)));
+		
 		//		if ($type == 'link') {
 		//			if (false == ($lpath = $this->_readlink($path))) {
 		//				$info['mime'] = 'symlink-broken';

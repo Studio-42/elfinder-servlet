@@ -17,6 +17,8 @@ import org.elfinder.servlets.fs.IFsImpl;
  * Sample of custom connector configuration.
  */
 public class MySampleConfig extends AbstractConnectorConfig {
+	public static final String HOME_SHARED_DOCS = "/home/shared-docs";
+
 	private static final Logger S_LOG = Logger.getLogger(MySampleConfig.class);
 
 	/**
@@ -35,12 +37,12 @@ public class MySampleConfig extends AbstractConnectorConfig {
 	
 	@Override
 	public String getRoot() {
-		return "/home/shared-docs";
+		return HOME_SHARED_DOCS;
 	}
 
 	@Override
 	public String getRootUrl() {
-		return "/statics/shared-docs";
+		return "/thumb.jsp?p=";
 	}
 
 	@Override
