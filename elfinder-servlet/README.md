@@ -6,7 +6,7 @@ elFinder servlet (Java/J2EE)
 Description
 -----------
 
-This is a Java connector (backend) for elFinder. I made simple modifications to compile with my eclipse.
+This is a Java connector (backend) for elFinder. I made simple modifications to compile with my eclipse. just maven install tomcat:run this project. 
 
 Features
 --------
