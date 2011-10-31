@@ -68,9 +68,9 @@
 						<artifactId>jstl</artifactId>
 						<version>1.2</version>
 					</dependency>
-				</dependencies>	
+				</dependencies>
 			</plugin>
-			
+
 		</plugins>
 		<resources>
 			<resource>
@@ -83,6 +83,11 @@
 		</resources>
 	</build>
 	<dependencies>
+		<dependency>
+			<groupId>com.mortennobel</groupId>
+			<artifactId>java-image-scaling</artifactId>
+			<version>0.8.5</version>
+		</dependency>
 		<dependency>
 			<groupId>javax.servlet</groupId>
 			<artifactId>servlet-api</artifactId>
