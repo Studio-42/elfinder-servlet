@@ -26,7 +26,7 @@ import org.elfinder.servlets.config.AbstractConnectorConfig;
 public class ElfinderConnectorServlet extends AbstractConnectorServlet {
 
 	public static String SHARED_DOCS = "Shared docs";
-	public static String THUMBNAIL = "/thumb.jsp?p=";
+	public static String THUMBNAIL = "/thumbnailer?p=";
 	public static String HOME_SHARED_DOCS = "/home/shared-docs";
 
 	private static Logger S_LOG = Logger.getLogger(ElfinderConnectorServlet.class);

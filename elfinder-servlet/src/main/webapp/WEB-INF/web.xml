@@ -13,7 +13,7 @@
 	</context-param>
 	<context-param>
 		<param-name>THUMBNAIL</param-name>
-		<param-value>/thumb.jsp?p=</param-value>
+		<param-value>/servlet/thumbnailer?p=</param-value>
 	</context-param>
 	<context-param>
 		<param-name>SHARED_DOCS</param-name>
@@ -25,14 +25,17 @@
 		<servlet-class>my.elconnector.ElfinderConnectorServlet</servlet-class>
 		<load-on-startup>100</load-on-startup>
 	</servlet>
+	<servlet>
+		<display-name>Generic Thumbnailer</display-name>
+		<servlet-name>thumbnailer</servlet-name>
+		<servlet-class>my.elconnector.Thumbnailer</servlet-class>
+	</servlet>
 	<servlet-mapping>
 		<servlet-name>ElrteConnector</servlet-name>
 		<url-pattern>/servlet/ElrteConnector</url-pattern>
 	</servlet-mapping>
-	<jsp-config>
-		<jsp-property-group>
-			<url-pattern>*.jsp</url-pattern>
-			<trim-directive-whitespaces>true</trim-directive-whitespaces>
-		</jsp-property-group>
-	</jsp-config>
+	<servlet-mapping>
+		<servlet-name>thumbnailer</servlet-name>
+		<url-pattern>/servlet/thumbnailer</url-pattern>
+	</servlet-mapping>
 </web-app>
