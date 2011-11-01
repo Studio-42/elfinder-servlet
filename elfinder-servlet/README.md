@@ -16,13 +16,6 @@ Features
  * Multiple configurations, useful for setting up multiple user areas
  * Thumbnails
  
-
-TODO
-----
- 
- * Code cleanup
-
-
 Requirements
 ------------
 
