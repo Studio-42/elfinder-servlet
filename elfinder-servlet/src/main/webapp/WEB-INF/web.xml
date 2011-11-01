@@ -16,6 +16,10 @@
 		<param-value>/servlet/thumbnailer?p=</param-value>
 	</context-param>
 	<context-param>
+		<param-name>REALOBJECTURL</param-name>
+		<param-value>/servlet/thumbnailer?p=</param-value>
+	</context-param>
+	<context-param>
 		<param-name>SHARED_DOCS</param-name>
 		<param-value>Shared docsüğişçö</param-value>
 	</context-param>

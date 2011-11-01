@@ -491,30 +491,12 @@ public abstract class AbstractCommand {
 		info.put("write", isDir ? config._isAllowedExistingDir(path, FileActionEnum.WRITE) : config._isAllowedExistingFile(path, FileActionEnum.WRITE));
 		info.put("rm", isDir ? config._isAllowedExistingDir(path, FileActionEnum.DELETE) : config._isAllowedExistingFile(path, FileActionEnum.WRITE));
 		
-		if(mimeType.contains("image"))
-		    info.put("tmb", isDir ? "" : encodeFileNameForOutput(_path2url(path)));
-		
-		//		if ($type == 'link') {
-		//			if (false == ($lpath = $this->_readlink($path))) {
-		//				$info['mime'] = 'symlink-broken';
-		//				return $info;
-		//			}
-		//			if (is_dir($lpath)) {
-		//				$info['mime']  = 'directory';
-		//			} else {
-		//				$info['parent'] = $this->_hash(dirname($lpath));
-		//				$info['mime']   = $this->_mimetype($lpath);
-		//			}
-		//			$info['link']   = $this->_hash($lpath);
-		//			$info['linkTo'] = ($this->_options['rootAlias'] ? $this->_options['rootAlias'] : basename($this->_options['root'])).substr($lpath, strlen($this->_options['root']));
-		//			$info['read']   = $this->_isAllowed($lpath, 'read');
-		//			$info['write']  = $this->_isAllowed($lpath, 'write');
-		//			$info['rm']     = $this->_isAllowed($lpath, 'rm');
-		//		} else {
-		//			$lpath = '';
-		//		}
+		if(mimeType.contains("image")){
+		    info.put("tmb", encodeFileNameForOutput(_path2url(path)));
+		    info.put("url", encodeFileNameForOutput(_path2url(path)) + "&r=1") ;
+		}
 
-		if (!isDir) {
+		if (!isDir && !mimeType.contains("image")) {
 			if (config.isFileUrlEnabled() && true == (Boolean) info.get("read")) {
 				info.put("url", encodeFileNameForOutput(_path2url(path)));
 			}

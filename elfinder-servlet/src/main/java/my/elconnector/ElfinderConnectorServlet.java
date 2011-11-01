@@ -13,7 +13,7 @@ import org.elfinder.servlets.AbstractConnectorServlet;
 import org.elfinder.servlets.config.AbstractConnectorConfig;
 
 /**
- * @author Özkan Pakdil
+ * @author Ã–zkan Pakdil
  * @date 29 aug. 2011
  * @version $Id$
  * @license BSD

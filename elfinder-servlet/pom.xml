@@ -3,7 +3,6 @@
 	<modelVersion>4.0.0</modelVersion>
 	<groupId>org.elfinder</groupId>
 	<artifactId>elfinder-servlet</artifactId>
-	<packaging>war</packaging>
 	<version>1.0.2-SNAPSHOT</version>
 	<description>Java backend for "elFinder".</description>
 	<build>
@@ -137,4 +136,5 @@
 			<version>1.4</version>
 		</dependency>
 	</dependencies>
+	<packaging>war</packaging>
 </project>

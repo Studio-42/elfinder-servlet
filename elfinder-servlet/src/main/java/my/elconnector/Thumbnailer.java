@@ -35,7 +35,14 @@ public class Thumbnailer extends HttpServlet {
 	private void processRequest(HttpServletRequest request, HttpServletResponse response) throws IOException {
 		int width = (!StringUtils.isEmpty(request.getParameter("w"))) ? Integer.valueOf(request.getParameter("w")) : 150;
 		String path = request.getParameter("p");
+		Boolean real = request.getParameter("r") != null;
 		BufferedImage b = null;
+
+		if (real) {
+			b = ImageIO.read(new File(ElfinderConnectorServlet.HOME_SHARED_DOCS + path));
+			ImageIO.write(b, "png", response.getOutputStream());
+			return;
+		}
 
 		BufferedImage image = ImageIO.read(new File(ElfinderConnectorServlet.HOME_SHARED_DOCS + path));
 
