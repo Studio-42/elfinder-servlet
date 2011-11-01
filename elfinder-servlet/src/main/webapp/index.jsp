@@ -21,12 +21,13 @@
 <!-- elRTE translation messages -->
 <script src="js/i18n/elrte.ru.js" type="text/javascript" charset="utf-8"></script>
 
- <script src="js/elfinder.min.js" type="text/javascript" charset="utf-8"></script>
- <link rel="stylesheet" href="css/elfinder.css" type="text/css" media="screen" charset="utf-8">
+<script src="js/elfinder.min.js" type="text/javascript" charset="utf-8"></script>
+<link rel="stylesheet" href="css/elfinder.css" type="text/css"
+	media="screen" charset="utf-8">
 
 <script type="text/javascript" charset="utf-8">
 	$().ready(function() {
-	
+
 		var opts = {
 			cssClass : 'el-rte',
 			height : 450,
@@ -36,7 +37,11 @@
 				$('<div id="myelfinder" />').elfinder({
 					url : '/servlet/ElrteConnector',
 					lang : 'en',
-					dialog : { width : 900, modal : true, title : 'elFinder - file manager for web' },
+					dialog : {
+						width : 900,
+						modal : true,
+						title : 'elFinder - file manager for web'
+					},
 					closeOnEditorCallback : true,
 					editorCallback : callback
 				})

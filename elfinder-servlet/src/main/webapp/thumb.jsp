@@ -1,4 +1,5 @@
-<%@page import="my.sample.MySampleConfig"%>
+<%@page import="my.elconnector.ElfinderConnectorServlet"%>
+<%@page import="my.elconnector.MySampleConfig"%>
 <%@page import="java.io.ByteArrayInputStream"%>
 <%@page import="java.io.ByteArrayOutputStream"%>
 <%@ page language="java" contentType="image/png" pageEncoding="UTF-8"%>
@@ -13,10 +14,10 @@
 <%
 	int width = (!StringUtils.isEmpty(request.getParameter("w"))) ? Integer.valueOf(request.getParameter("w")) : 150;
 	String path = request.getParameter("p");
-	
-	BufferedImage b =null;
 
-	BufferedImage image = ImageIO.read(new File(MySampleConfig.HOME_SHARED_DOCS+path));
+	BufferedImage b = null;
+
+	BufferedImage image = ImageIO.read(new File(ElfinderConnectorServlet.HOME_SHARED_DOCS + path));
 
 	ResampleOp rop = new ResampleOp(DimensionConstrain.createMaxDimension(width, -1));
 	rop.setNumberOfThreads(4);
@@ -24,9 +25,9 @@
 	ByteArrayOutputStream baos = new ByteArrayOutputStream();
 	ImageIO.write(b, "png", baos);
 	byte[] bytesOut = baos.toByteArray();
-		
-	response.setHeader("Last-Modified", DateUtils.addDays(Calendar.getInstance().getTime(), 2*360).toGMTString());
-	response.setHeader("Expires", DateUtils.addDays(Calendar.getInstance().getTime(), 2*360).toGMTString());
+
+	response.setHeader("Last-Modified", DateUtils.addDays(Calendar.getInstance().getTime(), 2 * 360).toGMTString());
+	response.setHeader("Expires", DateUtils.addDays(Calendar.getInstance().getTime(), 2 * 360).toGMTString());
 	out.clear();
 	ImageIO.write(b, "png", response.getOutputStream());
 %>

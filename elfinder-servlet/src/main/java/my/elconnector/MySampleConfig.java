@@ -1,10 +1,10 @@
-package my.sample;
+package my.elconnector;
 
+import org.apache.commons.lang.StringUtils;
 import org.apache.log4j.Logger;
 import org.elfinder.servlets.config.AbstractConnectorConfig;
 import org.elfinder.servlets.fs.DiskFsImpl;
 import org.elfinder.servlets.fs.IFsImpl;
-
 
 /**
  * @author Antoine Walter (www.anw.fr)
@@ -17,7 +17,6 @@ import org.elfinder.servlets.fs.IFsImpl;
  * Sample of custom connector configuration.
  */
 public class MySampleConfig extends AbstractConnectorConfig {
-	public static final String HOME_SHARED_DOCS = "/home/shared-docs";
 
 	private static final Logger S_LOG = Logger.getLogger(MySampleConfig.class);
 
@@ -25,28 +24,28 @@ public class MySampleConfig extends AbstractConnectorConfig {
 	 * Filesystem.
 	 */
 	private DiskFsImpl fsImpl;
-	
+
 	public MySampleConfig() {
 		fsImpl = new DiskFsImpl();
 	}
-	
+
 	@Override
 	public IFsImpl getFs() {
 		return fsImpl;
 	}
-	
+
 	@Override
 	public String getRoot() {
-		return HOME_SHARED_DOCS;
+		return ElfinderConnectorServlet.HOME_SHARED_DOCS;
 	}
 
 	@Override
 	public String getRootUrl() {
-		return "/thumb.jsp?p=";
+		return ElfinderConnectorServlet.THUMBNAIL;
 	}
 
 	@Override
 	public String rootAliasOrBaseName() {
-		return "Shared docs";
+		return ElfinderConnectorServlet.SHARED_DOCS;
 	}
 }

@@ -7,10 +7,23 @@
 	<welcome-file-list>
 		<welcome-file>index.jsp</welcome-file>
 	</welcome-file-list>
+	<context-param>
+		<param-name>HOME_SHARED_DOCS</param-name>
+		<param-value>/temp/shared-docs</param-value>
+	</context-param>
+	<context-param>
+		<param-name>THUMBNAIL</param-name>
+		<param-value>/thumb.jsp?p=</param-value>
+	</context-param>
+	<context-param>
+		<param-name>SHARED_DOCS</param-name>
+		<param-value>Shared docsüğişçö</param-value>
+	</context-param>
 	<servlet>
 		<display-name>Elrte Servlet</display-name>
 		<servlet-name>ElrteConnector</servlet-name>
-		<servlet-class>my.sample.MySampleServlet</servlet-class>
+		<servlet-class>my.elconnector.ElfinderConnectorServlet</servlet-class>
+		<load-on-startup>100</load-on-startup>
 	</servlet>
 	<servlet-mapping>
 		<servlet-name>ElrteConnector</servlet-name>

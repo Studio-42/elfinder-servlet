@@ -14,12 +14,12 @@ Features
  * Basic operations (copy, move, upload, create folder/file, rename, etc.)
  * UTF-8
  * Multiple configurations, useful for setting up multiple user areas
+ * Thumbnails
  
 
 TODO
 ----
-
- * Thumbnails
+ 
  * Code cleanup
 
 
