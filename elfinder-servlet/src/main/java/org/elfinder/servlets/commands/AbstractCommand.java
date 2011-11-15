@@ -278,14 +278,13 @@ public abstract class AbstractCommand {
 				return path;
 			}
 		}
-
 		File[] children = path.listFiles();
 		if (children != null) {
 			for (File child : children) {
+				if (config._isAccepted(child)) {
+					return child;
+				}
 				if (config._isAccepted(child) && child.isDirectory()) {
-					if (_hash(child).equals(hash)) {
-						return child;
-					}
 					File foundDir = _findDir(hash, child);
 					if (foundDir != null) {
 						return foundDir;
@@ -326,6 +325,7 @@ public abstract class AbstractCommand {
 		File dir = null;
 		if (dirHash != null && !"".equals(dirHash)) {
 			dir = _findDir(dirHash, null);
+
 			if (dir == null) {
 				throw new ConnectorException("Invalid parameters");
 			}

@@ -9,7 +9,7 @@
 	</welcome-file-list>
 	<context-param>
 		<param-name>HOME_SHARED_DOCS</param-name>
-		<param-value>/temp/shared-docs</param-value>
+		<param-value>/home/wlsadmin/shared_docs/</param-value>
 	</context-param>
 	<context-param>
 		<param-name>THUMBNAIL</param-name>
