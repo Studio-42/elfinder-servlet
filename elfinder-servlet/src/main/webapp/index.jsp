@@ -6,24 +6,19 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <!-- jQuery and jQuery UI -->
-<script src="js/jquery-1.6.1.min.js" type="text/javascript"
-	charset="utf-8"></script>
-<script src="js/jquery-ui-1.8.13.custom.min.js" type="text/javascript"
-	charset="utf-8"></script>
-<link rel="stylesheet" href="css/smoothness/jquery-ui-1.8.13.custom.css"
-	type="text/css" media="screen" charset="utf-8">
+<script src="js/jquery-1.6.1.min.js" type="text/javascript"	charset="utf-8"></script>
+<script src="js/jquery-ui-1.8.13.custom.min.js" type="text/javascript" charset="utf-8"></script>
+<link rel="stylesheet" href="css/smoothness/jquery-ui-1.8.13.custom.css" type="text/css" media="screen" charset="utf-8">
 
 <!-- elRTE -->
 <script src="js/elrte.min.js" type="text/javascript" charset="utf-8"></script>
-<link rel="stylesheet" href="css/elrte.min.css" type="text/css"
-	media="screen" charset="utf-8">
+<link rel="stylesheet" href="css/elrte.min.css" type="text/css" media="screen" charset="utf-8">
 
 <!-- elRTE translation messages -->
 <script src="js/i18n/elrte.ru.js" type="text/javascript" charset="utf-8"></script>
 
 <script src="js/elfinder.min.js" type="text/javascript" charset="utf-8"></script>
-<link rel="stylesheet" href="css/elfinder.css" type="text/css"
-	media="screen" charset="utf-8">
+<link rel="stylesheet" href="css/elfinder.css" type="text/css" media="screen" charset="utf-8">
 
 <script type="text/javascript" charset="utf-8">
 	$().ready(function() {
