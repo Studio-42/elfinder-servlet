@@ -35,7 +35,6 @@ public class DiskFsImpl implements IFsImpl {
 		return config;
 	}
 
-	@Override
 	public void createFile(File newFile, ByteArrayOutputStream os) throws FsException {
 		if (os == null) {
 			os = new ByteArrayOutputStream();
@@ -58,7 +57,6 @@ public class DiskFsImpl implements IFsImpl {
 		}
 	}
 
-	@Override
 	public void createFolder(File folder) throws FsException {
 		boolean ok = folder.mkdir();
 		if (!ok) {
@@ -66,7 +64,6 @@ public class DiskFsImpl implements IFsImpl {
 		}
 	}
 
-	@Override
 	public void renameFileOrDirectory(File targetFile, File futureFile) throws FsException {
 		boolean ok = targetFile.renameTo(futureFile);
 		if (!ok) {
@@ -74,7 +71,6 @@ public class DiskFsImpl implements IFsImpl {
 		}
 	}
 
-	@Override
 	public void copyFileOrDirectory(File targetFile, File futureFile) throws FsException {
 		boolean ok = true;
 		try {
@@ -91,7 +87,6 @@ public class DiskFsImpl implements IFsImpl {
 		}
 	}
 
-	@Override
 	public void moveFile(File file, File futureFile) throws FsException {
 		// renameTo doesn't always work on windows?
 		try {
@@ -104,31 +99,26 @@ public class DiskFsImpl implements IFsImpl {
 		}
 	}
 
-	@Override
 	public void removeFile(File path) throws FsException {
 		if (!path.delete()) {
 			throw new FsException("Unable to remove file");
 		}
 	}
 
-	@Override
 	public void removeEmptyDirectory(File path) throws FsException {
 		if (!path.delete()) {
 			throw new FsException("Unable to remove directory");
 		}
 	}
 
-	@Override
 	public boolean isAllowedFile(File file) {
 		return true;
 	}
 
-	@Override
 	public long getDirSize(File dir) {
 		return FileUtils.sizeOfDirectory(dir);
 	}
 
-	@Override
 	public long getFileSize(File file) {
 		return file.length();
 	}

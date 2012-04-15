@@ -2,14 +2,9 @@ package my.sample;
 
 import javax.servlet.http.HttpServletRequest;
 
-import org.apache.commons.lang.StringUtils;
 import org.apache.log4j.Logger;
-
 import org.elfinder.servlets.AbstractConnectorServlet;
-import org.elfinder.servlets.commands.AbstractCommand;
 import org.elfinder.servlets.config.AbstractConnectorConfig;
-
-import com.sun.xml.internal.ws.util.StringUtils;
 
 /**
  * @author Antoine Walter (www.anw.fr)
