@@ -23,7 +23,8 @@ import org.json.JSONObject;
 
 /**
  * This is superclass for each command implemented by the servlet.<br>
- * This is a quick & dirty code translation from PHP connector, probably needs some cleanup...
+ * This is a quick & dirty code translation from PHP connector, probably needs
+ * some cleanup...
  * 
  * @author Antoine Walter (www.anw.fr)
  * @date 29 aug. 2011
@@ -244,7 +245,8 @@ public abstract class AbstractCommand {
 	}
 
 	/**
-	 * For some reasons, some setups have to reencode filename before output to JSON.<br/>
+	 * For some reasons, some setups have to reencode filename before output to
+	 * JSON.<br/>
 	 * Let them override it if needed.
 	 * 
 	 * @param fileName
@@ -261,8 +263,10 @@ public abstract class AbstractCommand {
 	/**
 	 * Find folder by hash in required folder and subfolders
 	 * 
-	 * @param string $hash folder hash
-	 * @param string $path folder path to search in
+	 * @param string
+	 *            $hash folder hash
+	 * @param string
+	 *            $path folder path to search in
 	 * @return string
 	 **/
 	protected File _findDir(String hash, File path) {
@@ -272,7 +276,7 @@ public abstract class AbstractCommand {
 				return path;
 			}
 		}
-
+		
 		File[] children = path.listFiles();
 		if (children != null) {
 			for (File child : children) {
@@ -293,8 +297,10 @@ public abstract class AbstractCommand {
 	/**
 	 * Find file/folder by hash in required folder
 	 * 
-	 * @param string $hash file/folder hash
-	 * @param string $path folder path to search in
+	 * @param string
+	 *            $hash file/folder hash
+	 * @param string
+	 *            $path folder path to search in
 	 **/
 	protected File _find(String hash, File path) {
 		if (path == null) {
@@ -318,6 +324,7 @@ public abstract class AbstractCommand {
 		File dir = null;
 		if (dirHash != null && !"".equals(dirHash)) {
 			dir = _findDir(dirHash, null);
+
 			if (dir == null) {
 				throw new ConnectorException("Invalid parameters");
 			}
@@ -380,14 +387,16 @@ public abstract class AbstractCommand {
 	/**
 	 * Remove image thumbnail
 	 * 
-	 * @param string $img image file
+	 * @param string
+	 *            $img image file
 	 * @return void
 	 **/
 	protected void _rmTmb(File img) {
 		// TODO
-		//		if ($this->_options['tmbDir'] && false != ($tmb = $this->_tmbPath($img)) && file_exists($tmb)) {
-		//			@unlink($tmb);
-		//		}
+		// if ($this->_options['tmbDir'] && false != ($tmb =
+		// $this->_tmbPath($img)) && file_exists($tmb)) {
+		// @unlink($tmb);
+		// }
 	}
 
 	/************************************************************/
@@ -433,8 +442,10 @@ public abstract class AbstractCommand {
 		infos.put("date", config.dateFormat(f.lastModified()));
 		infos.put("read", true);
 
-		// return true if we have permission for at least one the following actions
-		boolean canWriteCurrentDirectoryOrCreateNewFilesOrDirectory = config._isAllowedExistingDir(f, FileActionEnum.WRITE) || config._isAllowedNewDir(f, FileActionEnum.WRITE) || config._isAllowedNewFile(f, FileActionEnum.WRITE);
+		// return true if we have permission for at least one the following
+		// actions
+		boolean canWriteCurrentDirectoryOrCreateNewFilesOrDirectory = config._isAllowedExistingDir(f, FileActionEnum.WRITE)
+				|| config._isAllowedNewDir(f, FileActionEnum.WRITE) || config._isAllowedNewFile(f, FileActionEnum.WRITE);
 		infos.put("write", canWriteCurrentDirectoryOrCreateNewFilesOrDirectory);
 		infos.put("rm", config._isAllowedExistingDir(f, FileActionEnum.DELETE));
 		putResponse("cwd", infos);
@@ -444,7 +455,8 @@ public abstract class AbstractCommand {
 	/**
 	 * Set current dir content
 	 * 
-	 * @param string path current dir path
+	 * @param string
+	 *            path current dir path
 	 * @return void
 	 **/
 	protected void _cdc(File dir) {
@@ -465,22 +477,22 @@ public abstract class AbstractCommand {
 	/**
 	 * Return file/folder info
 	 * 
-	 * @param string path file path
+	 * @param string
+	 *            path file path
 	 * @return array
 	 **/
 	protected Map<String, Object> _info(File path) {
-		//		type = filetype(path);
-		//		$stat =  $type == 'link' ? lstat($path) : stat($path);
-		//		if ($stat['mtime'] > $this->_today) {
-		//			$d = 'Today '.date('H:i', $stat['mtime']);
-		//		} elseif ($stat['mtime'] > $this->_yesterday) {
-		//			$d = 'Yesterday '.date('H:i', $stat['mtime']);
-		//		} else {
-		//			$d = date($this->_options['dateFormat'], $stat['mtime']);
-		//		}
+		// type = filetype(path);
+		// $stat = $type == 'link' ? lstat($path) : stat($path);
+		// if ($stat['mtime'] > $this->_today) {
+		// $d = 'Today '.date('H:i', $stat['mtime']);
+		// } elseif ($stat['mtime'] > $this->_yesterday) {
+		// $d = 'Yesterday '.date('H:i', $stat['mtime']);
+		// } else {
+		// $d = date($this->_options['dateFormat'], $stat['mtime']);
+		// }
 
 		boolean isDir = path.isDirectory();
-
 		Map<String, Object> info = new HashMap<String, Object>();
 		info.put("name", encodeFileNameForOutput(basename(path)));
 		info.put("hash", _hash(path));
@@ -488,54 +500,39 @@ public abstract class AbstractCommand {
 		info.put("date", config.dateFormat(path.lastModified()));
 		info.put("size", isDir ? getFs().getDirSize(path) : getFs().getFileSize(path));
 		info.put("read", isDir ? config._isAllowedExistingDir(path, FileActionEnum.READ) : config._isAllowedExistingFile(path, FileActionEnum.READ));
-		info.put("write", isDir ? config._isAllowedExistingDir(path, FileActionEnum.WRITE) : config._isAllowedExistingFile(path, FileActionEnum.WRITE));
+		info.put("write",isDir ? config._isAllowedExistingDir(path, FileActionEnum.WRITE) : config._isAllowedExistingFile(path, FileActionEnum.WRITE));
 		info.put("rm", isDir ? config._isAllowedExistingDir(path, FileActionEnum.DELETE) : config._isAllowedExistingFile(path, FileActionEnum.WRITE));
-
-		//		if ($type == 'link') {
-		//			if (false == ($lpath = $this->_readlink($path))) {
-		//				$info['mime'] = 'symlink-broken';
-		//				return $info;
-		//			}
-		//			if (is_dir($lpath)) {
-		//				$info['mime']  = 'directory';
-		//			} else {
-		//				$info['parent'] = $this->_hash(dirname($lpath));
-		//				$info['mime']   = $this->_mimetype($lpath);
-		//			}
-		//			$info['link']   = $this->_hash($lpath);
-		//			$info['linkTo'] = ($this->_options['rootAlias'] ? $this->_options['rootAlias'] : basename($this->_options['root'])).substr($lpath, strlen($this->_options['root']));
-		//			$info['read']   = $this->_isAllowed($lpath, 'read');
-		//			$info['write']  = $this->_isAllowed($lpath, 'write');
-		//			$info['rm']     = $this->_isAllowed($lpath, 'rm');
-		//		} else {
-		//			$lpath = '';
-		//		}
 
 		if (!isDir) {
 			if (config.isFileUrlEnabled() && true == (Boolean) info.get("read")) {
-				info.put("url", encodeFileNameForOutput(_path2url(path)));
+				info.put("url", encodeFileNameForOutput(config.getFileUrl(path)));
+			}
+			
+			if(config.hasThumbnail(path)) {
+				info.put("tmb", encodeFileNameForOutput(config.getThumbnailUrl(path)));
 			}
 
-			//			if ($this->_options['fileURL'] && $info['read']) {
-			//				$info['url'] = $this->_path2url($lpath ? $lpath : $path);
-			//			}
+			// if ($this->_options['fileURL'] && $info['read']) {
+			// $info['url'] = $this->_path2url($lpath ? $lpath : $path);
+			// }
 
-			//			if (0 === ($p = strpos($info['mime'], 'image'))) {
-			//				if (false != ($s = getimagesize($path))) {
-			//					$info['dim'] = $s[0].'x'.$s[1];
-			//				}
-			//				if ($info['read']) {
-			//					$info['resize'] = isset($info['dim']) && $this->_canCreateTmb($info['mime']);
-			//					$tmb = $this->_tmbPath($path);
+			// if (0 === ($p = strpos($info['mime'], 'image'))) {
+			// if (false != ($s = getimagesize($path))) {
+			// $info['dim'] = $s[0].'x'.$s[1];
+			// }
+			// if ($info['read']) {
+			// $info['resize'] = isset($info['dim']) &&
+			// $this->_canCreateTmb($info['mime']);
+			// $tmb = $this->_tmbPath($path);
 			//
-			//					if (file_exists($tmb)) {
-			//						$info['tmb']  = $this->_path2url($tmb);
-			//					} elseif ($info['resize']) {
-			//						$this->_result['tmb'] = true;
-			//					}
-			//					
-			//				}
-			//			}
+			// if (file_exists($tmb)) {
+			// $info['tmb'] = $this->_path2url($tmb);
+			// } elseif ($info['resize']) {
+			// $this->_result['tmb'] = true;
+			// }
+			//
+			// }
+			// }
 		}
 		return info;
 	}
@@ -543,7 +540,8 @@ public abstract class AbstractCommand {
 	/**
 	 * Return directory tree (multidimensional array)
 	 * 
-	 * @param string path directory path
+	 * @param string
+	 *            path directory path
 	 * @return array
 	 **/
 	protected Map<String, Object> _tree(File path) {
@@ -552,8 +550,10 @@ public abstract class AbstractCommand {
 		info.put("name", getFileBasenameOrRootAlias(path));
 		info.put("read", config._isAllowedExistingDir(path, FileActionEnum.READ));
 
-		// we return true if we have permission for at least one the following actions
-		boolean canWriteCurrentDirectoryOrCreateNewFilesOrDirectory = config._isAllowedExistingDir(path, FileActionEnum.WRITE) || config._isAllowedNewDir(path, FileActionEnum.WRITE) || config._isAllowedNewFile(path, FileActionEnum.WRITE);
+		// we return true if we have permission for at least one the following
+		// actions
+		boolean canWriteCurrentDirectoryOrCreateNewFilesOrDirectory = config._isAllowedExistingDir(path, FileActionEnum.WRITE)
+				|| config._isAllowedNewDir(path, FileActionEnum.WRITE) || config._isAllowedNewFile(path, FileActionEnum.WRITE);
 		info.put("write", canWriteCurrentDirectoryOrCreateNewFilesOrDirectory);
 
 		List<Object> dirs = new ArrayList<Object>();
@@ -580,41 +580,13 @@ public abstract class AbstractCommand {
 	/**
 	 * Return file path hash
 	 * 
-	 * @param string path
+	 * @param string
+	 *            path
 	 * @return string
 	 **/
 	protected String _hash(File path) {
 		String hash = DigestUtils.md5Hex(path.getAbsolutePath());
 		return hash;
-	}
-
-	/**
-	 * Return file URL
-	 * 
-	 * @param string $path
-	 * @return string
-	 **/
-	protected String _path2url(File path) {
-		//		$dir  = substr(dirname($path), strlen($this->_options['root'])+1);
-		//		$file = rawurlencode(basename($path));
-		//		return $this->_options['URL'].($dir ? str_replace(DIRECTORY_SEPARATOR, '/', $dir).'/' : '').$file;
-		//return config.getRootUrl() + "/" + basename(path);
-
-		String url = null;
-		File currentPath = path;
-		while (!currentPath.getPath().equals(getRootFile().getPath())) {
-			if (url == null) {
-				url = basename(currentPath);
-			} else {
-				url = basename(currentPath) + "/" + url;
-			}
-
-			currentPath = currentPath.getParentFile();
-		}
-
-		url = config.getRootUrl() + "/" + url;
-
-		return url;
 	}
 
 }

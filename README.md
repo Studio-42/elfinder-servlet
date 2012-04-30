@@ -6,7 +6,7 @@ elFinder servlet (Java/J2EE)
 Description
 -----------
 
-This is a Java connector (backend) for elFinder.
+This is a Java connector (backend) for elFinder. I made simple modifications to compile with my eclipse. just maven install tomcat:run this project. 
 
 Features
 --------
@@ -14,15 +14,8 @@ Features
  * Basic operations (copy, move, upload, create folder/file, rename, etc.)
  * UTF-8
  * Multiple configurations, useful for setting up multiple user areas
- 
-
-TODO
-----
-
  * Thumbnails
- * Code cleanup
-
-
+ 
 Requirements
 ------------
 
@@ -62,7 +55,7 @@ Authors
 -------
 
 Initial Java/J2EE backend developer: Antoine Walter _anw!nospam!@anw.fr_
-
+Thumbnails, elfinder+elrte demo: özkan pakdil
 
 License
 -------

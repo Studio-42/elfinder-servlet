@@ -59,6 +59,25 @@ public abstract class AbstractConnectorConfig {
 	public abstract String getRootUrl();
 
 	/**
+	 * Getting URL of a file.
+	 * @param file
+	 * @return
+	 */
+	public abstract String getFileUrl(File file);
+	
+	/**
+	 * Get URL of file thumnail.
+	 * @return
+	 */
+	public abstract String getThumbnailUrl(File path);
+	
+	/**
+	 * Returns true if there is a thumbnail to display for the file.
+	 * @return
+	 */
+	public abstract boolean hasThumbnail(File path);
+
+	/**
 	 * Returns root alias, or null to use actual root folder name.
 	 * 
 	 * @return root alias, or null to use actual root folder name
@@ -169,21 +188,23 @@ public abstract class AbstractConnectorConfig {
 	}
 
 	/**
-	 * Getting URL of a file.
+	 * Getting relative path of a file.
 	 * @param file
 	 * @return
 	 */
-	public String getFileUrl(File file) {
-		return getRoot() + file.getPath();
-	}
+	public String getRelativePath(File path) {
+		String url = null;
+		File currentPath = path;
+		while (!currentPath.getPath().equals(getRootFile().getPath())) {
+			if (url == null) {
+				url = basename(currentPath);
+			} else {
+				url = basename(currentPath) + "/" + url;
+			}
 
-	/**
-	 * Getting URL of a file.
-	 * @param file
-	 * @return
-	 */
-	public String getFileUrl(String fileName) {
-		return getRoot() + fileName;
+			currentPath = currentPath.getParentFile();
+		}
+		return url;
 	}
 
 	/**
