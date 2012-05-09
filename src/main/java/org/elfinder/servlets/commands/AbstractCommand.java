@@ -72,7 +72,11 @@ public abstract class AbstractCommand {
 	}
 
 	protected String getParam(String paramName) {
-		return (String) requestParameters.get(paramName);
+		String param = (String) requestParameters.get(paramName);
+		if (param != null) {
+			param = param.trim();
+		}
+		return param;
 	}
 
 	protected Object getParamObject(String paramName) {
