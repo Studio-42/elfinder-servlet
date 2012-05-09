@@ -6,7 +6,16 @@ elFinder servlet (Java/J2EE)
 Description
 -----------
 
-This is a Java connector (backend) for elFinder. I made simple modifications to compile with my eclipse. just maven install tomcat:run this project. 
+This is a Java connector (backend) for elFinder.
+
+Important! This project is a generic library which can't be run directly.
+All you need is to integrate it in your own project:
+- as a maven dependency (org.elfinder:elfinder-servlet)
+- or as an external Jar (jar is available in /jar directory)
+
+Have a look to the "elfinder-servlet-demo" project to see a runnable example:
+https://github.com/Studio-42/elfinder-servlet-demo
+
 
 Features
 --------
@@ -15,7 +24,7 @@ Features
  * UTF-8
  * Multiple configurations, useful for setting up multiple user areas
  * Thumbnails
- 
+
 Requirements
 ------------
 
@@ -29,15 +38,15 @@ Documentation
 
 ...doc is in da code, sorry :(
 
+=> NEW! Have a look to "elfinder-servlet-demo" project to see a runnable project.
+
 In a few words and as quick start guide, you should:
 
 1. extend `AbstractConnectorConfig` to implement your own backend configuration (essentially to provide root directory, root URL and filesystem implementation - you may use `DiskFsImpl`) and eventually override default behaviors (like max upload size, date format...)
-
-	See `my.sample.MySampleConfig` for an example
+	See `my.demo.MyDemoConfig` for an example from the demo project
     
 2. extend AbstractConnectorServlet and implement prepareConfig(), for returning your own backend configuration
-
-	See `my.sample.MySampleServlet` for an example
+	See `my.demo.MyDemoServlet` for an example from the demo project
     
 3. then use your own servlet like any Java servlet (put it to your web.xml)
  
@@ -54,8 +63,8 @@ You may also:
 Authors
 -------
 
-Initial Java/J2EE backend developer: Antoine Walter _anw!nospam!@anw.fr_
-Thumbnails, elfinder+elrte demo: özkan pakdil
+Initial developer: Antoine Walter _anw!nospam!@anw.fr_
+Thumbnails & elfinder demo: özkan pakdil
 
 License
 -------
