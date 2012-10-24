@@ -16,7 +16,7 @@ import org.elfinder.servlets.FileActionEnum;
  * @date 23 ott. 2012
  * @version $Id$
  * @license BSD
- * @description: this class implmentes resize,crop and rotate funzion of a image
+ * @description: this class implmentes image resize,crop and rotate function 
  */
 public class ResizeCommand extends AbstractCommandOverride {
 
